@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hfa-brain"
+version = "0.1.0"
+description = "high-frequency-alpha RL brain: value-function trading agent + pre-trade risk guard"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []  # from-scratch agent, no numpy/torch; runs offline
+
+[project.optional-dependencies]
+server = ["fastapi>=0.110", "uvicorn[standard]>=0.29"]
+torch = ["torch>=2.2"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+hfa-brain = "hfa_brain.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["hfa_brain*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

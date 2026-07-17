@@ -1,0 +1,17 @@
+:root {
+  --bg: #06090f;
+  --panel: #0d1420;
+  --border: #1b2740;
+  --text: #dbe6f3;
+  --muted: #7488a6;
+  --bid: #26d07c;
+  --ask: #ff5470;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%; background: var(--bg); color: var(--text);
+  font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.big { font-size: 26px; font-weight: 800; }

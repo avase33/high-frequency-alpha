@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Go
+/ingestion-go/hfa-ingestion
+*.test
+
+# Rust
+/matcher-rust/target/
+
+# Node / Next.js
+node_modules/
+/dashboard-ts/.next/
+/dashboard-ts/out/
+
+# env / editors / OS
+.env
+.vscode/
+.idea/
+.DS_Store

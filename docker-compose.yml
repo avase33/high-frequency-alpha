@@ -1,0 +1,34 @@
+services:
+  matcher:
+    build: ./matcher-rust
+    environment:
+      MATCHER_ADDR: 0.0.0.0:8091
+    ports:
+      - "8091:8091"
+
+  brain:
+    build: ./brain-python
+    ports:
+      - "8000:8000"
+
+  ingestion:
+    build: ./ingestion-go
+    environment:
+      HFA_ADDR: ":8080"
+      HFA_MATCHER_URL: http://matcher:8091
+      HFA_BRAIN_URL: http://brain:8000
+      HFA_TICK_MS: "250"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - matcher
+      - brain
+
+  dashboard:
+    build: ./dashboard-ts
+    environment:
+      NEXT_PUBLIC_GATEWAY_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ingestion
